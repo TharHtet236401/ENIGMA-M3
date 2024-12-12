@@ -1,0 +1,278 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.enigma-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.enigma-box {
+    width: 100%;
+    max-width: 1000px;
+    height: 90vh;
+    background: linear-gradient(145deg, #2a2a2a, #333);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border: 3px solid #444;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.enigma-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.enigma-title h1 {
+    color: #d4af37;
+    margin: 0;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.enigma-panel {
+    flex: 1;
+    background-color: #222;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #444;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Rotor Section */
+.rotor-section {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.rotor-labels {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    margin-bottom: 15px;
+}
+
+.rotor-labels span {
+    color: #d4af37;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.rotor-displays {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+}
+
+.rotor-display {
+    background: #000;
+    padding: 12px;
+    border: 3px solid #d4af37;
+    border-radius: 8px;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+}
+
+.rotor-display::before,
+.rotor-display::after {
+    content: '▲';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #d4af37;
+    font-size: 18px;
+}
+
+.rotor-display::before {
+    top: 5px;
+}
+
+.rotor-display::after {
+    content: '▼';
+    bottom: 5px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: #d4af37;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Lampboard */
+.lampboard {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    border: 2px solid #333;
+}
+
+.lamp {
+    aspect-ratio: 1;
+    background: #2a2a2a;
+    border: 3px solid #444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-weight: bold;
+    font-size: 24px;
+    transition: all 0.2s ease;
+    padding: 15px;
+}
+
+.lamp.active {
+    background: #d4af37;
+    color: #000;
+    box-shadow: 0 0 30px #d4af37;
+    border-color: #d4af37;
+}
+
+/* Keyboard */
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 12px;
+    padding: 25px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    border: 2px solid #333;
+}
+
+.key {
+    aspect-ratio: 1;
+    background: #2a2a2a;
+    border: 3px solid #444;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d4af37;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    user-select: none;
+    padding: 15px;
+}
+
+.key:hover {
+    background: #333;
+}
+
+.key:active {
+    background: #d4af37;
+    color: #000;
+    transform: translateY(3px);
+}
+
+/* Message Display */
+.message-display {
+    margin-top: 25px;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    border: 2px solid #333;
+    height: 100px;
+}
+
+.output-text {
+    height: 100%;
+    padding: 15px;
+    color: #d4af37;
+    font-family: monospace;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+    .enigma-box {
+        padding: 20px;
+    }
+
+    .enigma-panel {
+        padding: 20px;
+    }
+
+    .rotor-labels {
+        gap: 60px;
+    }
+
+    .rotor-displays {
+        gap: 30px;
+    }
+
+    .lamp, .key {
+        font-size: 24px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .enigma-container {
+        padding: 10px;
+    }
+    
+    .keyboard, .lampboard {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .rotor-displays {
+        gap: 15px;
+    }
+    
+    .rotor-labels {
+        gap: 45px;
+    }
+
+    .lamp, .key {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .output-text {
+        font-size: 24px;
+    }
+} 

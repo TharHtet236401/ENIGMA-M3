@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma Machine</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div class="enigma-container">
+        <div class="enigma-box">
+            <div class="enigma-title">
+                <h1>Enigma M3</h1>
+            </div>
+            
+            <div class="enigma-panel">
+                <!-- Rotor Panel -->
+                <div class="rotor-section">
+                    <div class="rotor-labels">
+                        <span>I</span>
+                        <span>II</span>
+                        <span>III</span>
+                    </div>
+                    <div class="rotor-displays">
+                        <div class="rotor-display">
+                            <select id="rotor1"></select>
+                        </div>
+                        <div class="rotor-display">
+                            <select id="rotor2"></select>
+                        </div>
+                        <div class="rotor-display">
+                            <select id="rotor3"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lampboard -->
+                <div class="lampboard"></div>
+
+                <!-- Keyboard -->
+                <div class="keyboard"></div>
+            </div>
+
+            <!-- Message Display -->
+            <div class="message-display">
+                <div class="output-text" id="output-text"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/enigma.js"></script>
+</body>
+</html>
