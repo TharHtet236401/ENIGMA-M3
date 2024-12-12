@@ -2,6 +2,8 @@
 
 A web-based simulation of the WWII Enigma encryption machine. This project recreates the functionality of the Enigma M3 with a modern interface.
 
+![Enigma Machine](https://themilitarymuseums.ca/images/exhibitsPermanent/enigma/enigma-machine-8.jpg)
+
 ## Features
 - Historical rotor and reflector configurations
 - Real-time encryption/decryption
@@ -14,8 +16,6 @@ A web-based simulation of the WWII Enigma encryption machine. This project recre
 ```bash
 npm install
 ```
-
-![Enigma Machine Screenshot](screenshot.png)
 
 ## Features
 
