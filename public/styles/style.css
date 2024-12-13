@@ -429,3 +429,25 @@ select {
     background: #d4af37;
     color: #000;
 } 
+
+.configure-reflector-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.configure-reflector-section .flip-button {
+    position: static;  /* Override the absolute positioning */
+    background: #1a1a1a;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.configure-reflector-section .flip-button:hover {
+    background: #d4af37;
+    color: #000;
+} 
