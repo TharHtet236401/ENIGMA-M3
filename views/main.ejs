@@ -9,41 +9,99 @@
 <body>
     <div class="enigma-container">
         <div class="enigma-box">
-            <div class="enigma-title">
-                <h1>Enigma M3</h1>
-            </div>
-            
-            <div class="enigma-panel">
-                <!-- Rotor Panel -->
-                <div class="rotor-section">
-                    <div class="rotor-labels">
-                        <span>I</span>
-                        <span>II</span>
-                        <span>III</span>
+            <div class="enigma-card">
+                <div class="enigma-face front">
+                    <div class="enigma-title">
+                        <h1>Enigma M3</h1>
                     </div>
-                    <div class="rotor-displays">
-                        <div class="rotor-display">
-                            <select id="rotor1"></select>
+                    
+                    <div class="enigma-panel">
+                        <!-- Rotor Panel -->
+                        <div class="rotor-section">
+                            <div class="rotor-labels">
+                                <span>I</span>
+                                <span>II</span>
+                                <span>III</span>
+                            </div>
+                            <div class="rotor-displays">
+                                <div class="rotor-display">
+                                    <select id="rotor1"></select>
+                                </div>
+                                <div class="rotor-display">
+                                    <select id="rotor2"></select>
+                                </div>
+                                <div class="rotor-display">
+                                    <select id="rotor3"></select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="rotor-display">
-                            <select id="rotor2"></select>
-                        </div>
-                        <div class="rotor-display">
-                            <select id="rotor3"></select>
-                        </div>
+
+                        <!-- Lampboard -->
+                        <div class="lampboard"></div>
+
+                        <!-- Keyboard -->
+                        <div class="keyboard"></div>
                     </div>
+
+                    <!-- Message Display -->
+                    <div class="message-display">
+                        <div class="output-text" id="output-text"></div>
+                    </div>
+
+                    <button class="flip-button">Configure Reflector ↻</button>
                 </div>
 
-                <!-- Lampboard -->
-                <div class="lampboard"></div>
+                <div class="enigma-face back">
+                    <div class="enigma-title">
+                        <h1>Reflector Configuration</h1>
+                    </div>
 
-                <!-- Keyboard -->
-                <div class="keyboard"></div>
-            </div>
+                    <!-- Reflector Wiring Panel -->
+                    <div class="reflector-wiring">
+                        <div class="reflector-title">
+                            <span>Custom Reflector Wiring</span>
+                        </div>
+                        <div class="alphabet-row top-row">
+                            <div class="letter-node" data-letter="A">A</div>
+                            <div class="letter-node" data-letter="B">B</div>
+                            <div class="letter-node" data-letter="C">C</div>
+                            <div class="letter-node" data-letter="D">D</div>
+                            <div class="letter-node" data-letter="E">E</div>
+                            <div class="letter-node" data-letter="F">F</div>
+                            <div class="letter-node" data-letter="G">G</div>
+                            <div class="letter-node" data-letter="H">H</div>
+                            <div class="letter-node" data-letter="I">I</div>
+                            <div class="letter-node" data-letter="J">J</div>
+                            <div class="letter-node" data-letter="K">K</div>
+                            <div class="letter-node" data-letter="L">L</div>
+                            <div class="letter-node" data-letter="M">M</div>
+                        </div>
+                        <div class="wiring-canvas">
+                            <canvas id="wiringCanvas"></canvas>
+                        </div>
+                        <div class="alphabet-row bottom-row">
+                            <div class="letter-node" data-letter="N">N</div>
+                            <div class="letter-node" data-letter="O">O</div>
+                            <div class="letter-node" data-letter="P">P</div>
+                            <div class="letter-node" data-letter="Q">Q</div>
+                            <div class="letter-node" data-letter="R">R</div>
+                            <div class="letter-node" data-letter="S">S</div>
+                            <div class="letter-node" data-letter="T">T</div>
+                            <div class="letter-node" data-letter="U">U</div>
+                            <div class="letter-node" data-letter="V">V</div>
+                            <div class="letter-node" data-letter="W">W</div>
+                            <div class="letter-node" data-letter="X">X</div>
+                            <div class="letter-node" data-letter="Y">Y</div>
+                            <div class="letter-node" data-letter="Z">Z</div>
+                        </div>
+                        <div class="reflector-controls">
+                            <button id="clearWiring">Clear Wiring</button>
+                            <button id="saveWiring">Save Custom Reflector</button>
+                        </div>
+                    </div>
 
-            <!-- Message Display -->
-            <div class="message-display">
-                <div class="output-text" id="output-text"></div>
+                    <button class="flip-button">Back to Enigma ↻</button>
+                </div>
             </div>
         </div>
     </div>
