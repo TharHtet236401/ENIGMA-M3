@@ -34,6 +34,9 @@ class EnigmaMachine {
         this.setupReflectorWiring();
         this.setupLightboard();
         this.setupFlipButtons();
+        this.setupLetterHoverEffects();
+        this.updateConnectionCount();
+        this.updateHelperText('Click a letter to start a connection');
     }
 
     setupReflectorWiring() {
@@ -80,17 +83,24 @@ class EnigmaMachine {
             if (!this.customReflector[letter]) {
                 this.selectedLetter = letter;
                 letterNode.classList.add('selected');
+                this.updateHelperText('Now click another letter to connect');
+                this.highlightValidTargets();
             }
         } else if (this.selectedLetter === letter) {
             // Deselect current letter
             this.selectedLetter = null;
             letterNode.classList.remove('selected');
+            this.updateHelperText('Click a letter to start a connection');
+            this.clearHighlights();
         } else {
             // Connect letters
             if (!this.customReflector[letter] && !this.customReflector[this.selectedLetter]) {
                 this.connectLetters(this.selectedLetter, letter);
                 this.selectedLetter = null;
                 this.redrawWiring();
+                this.updateConnectionCount();
+                this.clearHighlights();
+                this.updateHelperText('Click a letter to start a connection');
             }
         }
     }
@@ -332,6 +342,57 @@ class EnigmaMachine {
                     console.log('Card classes after toggle:', card.className);
                 } else {
                     console.error('Card element not found');
+                }
+            });
+        });
+    }
+
+    updateHelperText(text) {
+        const helperText = document.getElementById('helper-text');
+        helperText.textContent = text;
+    }
+
+    updateConnectionCount() {
+        const count = Object.keys(this.customReflector).length / 2;
+        const countElement = document.getElementById('connection-count');
+        countElement.textContent = count;
+        
+        if (count === 13) {
+            this.updateHelperText('All letters connected! You can save the configuration.');
+        }
+    }
+
+    highlightValidTargets() {
+        document.querySelectorAll('.letter-node').forEach(node => {
+            const letter = node.dataset.letter;
+            if (!this.customReflector[letter] && letter !== this.selectedLetter) {
+                node.classList.add('valid-target');
+            }
+        });
+    }
+
+    clearHighlights() {
+        document.querySelectorAll('.letter-node').forEach(node => {
+            node.classList.remove('valid-target', 'invalid-target');
+        });
+    }
+
+    // Add mouseover effects
+    setupLetterHoverEffects() {
+        document.querySelectorAll('.letter-node').forEach(node => {
+            node.addEventListener('mouseover', () => {
+                if (this.selectedLetter && node.dataset.letter !== this.selectedLetter) {
+                    if (!this.customReflector[node.dataset.letter]) {
+                        node.classList.add('valid-target');
+                    } else {
+                        node.classList.add('invalid-target');
+                    }
+                }
+            });
+
+            node.addEventListener('mouseout', () => {
+                if (!this.selectedLetter) {
+                    node.classList.remove('valid-target', 'invalid-target');
                 }
             });
         });

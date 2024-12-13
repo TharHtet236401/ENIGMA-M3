@@ -377,19 +377,62 @@ select {
     justify-content: center;
     color: #d4af37;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     font-size: 14px;
     margin: 0 2px;
+    position: relative;
+}
+
+.letter-node:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
 }
 
 .letter-node.selected {
     background: #d4af37;
     color: #000;
+    animation: pulse 1.5s infinite;
 }
 
 .letter-node.connected {
     background: #444;
     border-color: #666;
+}
+
+.letter-node.valid-target {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.letter-node.invalid-target {
+    border-color: #f44336;
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Add connection counter */
+.connection-status {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #d4af37;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Add helper text */
+.helper-text {
+    color: #888;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+    font-style: italic;
 }
 
 .wiring-canvas {
